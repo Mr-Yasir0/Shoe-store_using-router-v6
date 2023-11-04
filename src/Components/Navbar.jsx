@@ -11,10 +11,14 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import data from "../Temp/data.json";
+import { Link } from "react-router-dom";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
+  const [{ categorie }] = data;
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -66,6 +70,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
+            {/* mobile nav */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -111,17 +116,25 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Shoe Store
           </Typography>
+
+          {/* desktop nav */}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
             }}
           >
-            <Button sx={{ color: "white" }}>Products</Button>
-            <Button sx={{ color: "white" }}>About</Button>
-            <Button sx={{ color: "white" }}>Contact</Button>
+            <Link to={`/Running`}>
+              <Button sx={{ color: "white" }}>running</Button>
+            </Link>
+            <Link link to={"/Basketball"}>
+              <Button sx={{ color: "white" }}>Basket Ball</Button>
+            </Link>
+            <Link to={"/Football"}>
+              <Button sx={{ color: "white" }}>Football</Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
